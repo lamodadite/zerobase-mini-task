@@ -38,11 +38,15 @@ public class Task07 {
             }
         }
 
-        // 출력
+        // 로또 번호 출력
         for (int i = 0; i < numOfLotto; i++) {
-            for (int num : lotto[i]
-            ) {
-                System.out.printf("%02d,", num);
+            System.out.printf("%c\t", (char) (i + 65));
+            for (int j = 0; j < 6; j++) {
+                if (j == 5) {
+                    System.out.printf("%02d", lotto[i][j]);
+                } else {
+                    System.out.printf("%02d,", lotto[i][j]);
+                }
             }
             System.out.println();
         }
@@ -50,14 +54,48 @@ public class Task07 {
 
         // 로또 당첨 번호
         int[] winningNum = lottoMaker();
+
+        // 당첨 번호 출력
         System.out.println("[로또 발표]");
-        for (int num :
-                winningNum) {
-            System.out.printf("%02d,", num);
+        System.out.printf("\t");
+        for (int i = 0; i < 6; i++) {
+            if (i == 5) {
+                System.out.printf("%02d", winningNum[i]);
+            } else {
+                System.out.printf("%02d,", winningNum[i]);
+            }
         }
+        System.out.println();
+        System.out.println();
 
         // 당첨 번호와 구매 로또 비교하여 숫자 일치 여부 판단
+        int[] equalCnt = new int[numOfLotto];
 
-
+        for (int i = 0; i < numOfLotto; i++) {
+            int temp = 0;
+            for (int j = 0; j < 6; j++) {
+                for (int k = 0; k < 6; k++) {
+                    if (lotto[i][j] == winningNum[k]) {
+                        temp++;
+                    }
+                }
+            equalCnt[i] = temp;
+            }
         }
+
+        // 출력
+        System.out.println("[내 로또 결과]");
+        for (int i = 0; i < numOfLotto; i++) {
+            System.out.printf("%c\t", (char) (i + 65));
+            for (int j = 0; j < 6; j++) {
+                if (j == 5) {
+                    System.out.printf("%02d", lotto[i][j]);
+                } else {
+                    System.out.printf("%02d,", lotto[i][j]);
+                }
+            }
+            System.out.printf(" => %d개 일치", equalCnt[i]);
+            System.out.println();
+        }
+    }
 }
