@@ -1,14 +1,22 @@
+import java.util.Random;
 import java.util.Scanner;
 
 public class Task07 {
 
-    public static void lottoMaker (int numOfLotto) {
-        for (int i = 0; i < numOfLotto; i++) {
+    public static int[] lottoMaker () {
+        Random random = new Random();
+        int[] numList = new int[6];
+
+        for (int i = 0; i < 6; i++) {
+            numList[i] = random.nextInt(45)+1;
+            for (int j = 0; j < i; j++) {
+                if (numList[i] == numList[j]) {
+                    i--;
+                    break;
+                }
+            }
         }
-
-
-
-
+        return numList;
     }
 
     public static void main(String[] args) {
@@ -20,7 +28,11 @@ public class Task07 {
         int numOfLotto = sc.nextInt();
 
         // 입력한 개수만큼의 로또 개수 생성
-        lottoMaker(numOfLotto);
+        for (int i = 0; i < numOfLotto; i++) {
+            int[] A = lottoMaker();
+        }
+
+        System.out.println();
 
     }
 }
