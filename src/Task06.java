@@ -68,20 +68,3 @@ public class Task06 {
         System.out.printf("[투표결과] 당선인: %s", elected);
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
