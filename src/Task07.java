@@ -17,7 +17,7 @@ public class Task07 {
             }
         }
         return numList;
-    }
+    } // 로또 번호 생성기. 6개의 int 값을 갖는 배열로 리턴.
 
     public static void main(String[] args) {
         System.out.println("[로또 당첨 프로그램]");
